@@ -1,0 +1,24 @@
+{
+  "id": "controller-battery",
+  "name": "Controller Battery",
+  "version": "1.0.0",
+  "minNoctaliaVersion": "3.6.0",
+  "author": "rael2pac",
+  "license": "MIT",
+  "repository": "https://github.com/rael2pac/NixOS",
+  "description": "Shows battery level of connected wireless controllers (PS4, PS5, Xbox) in the bar",
+  "tags": ["Bar", "Panel", "Hardware"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml",
+    "panel": "Panel.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {
+      "refreshInterval": 15000,
+      "showLowestOnly": true
+    }
+  }
+}

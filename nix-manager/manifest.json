@@ -1,0 +1,21 @@
+{
+  "id": "nix-manager",
+  "name": "Nix Manager",
+  "version": "1.0.0",
+  "minNoctaliaVersion": "3.6.0",
+  "author": "rael2pac",
+  "license": "MIT",
+  "repository": "https://github.com/rael2pac/NixOS",
+  "description": "NixOS system update and cleanup buttons in the panel",
+  "tags": ["Bar", "Panel"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml",
+    "panel": "Panel.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {}
+  }
+}

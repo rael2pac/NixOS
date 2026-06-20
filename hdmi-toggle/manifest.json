@@ -1,0 +1,21 @@
+{
+  "id": "hdmi-toggle",
+  "name": "HDMI Toggle",
+  "version": "2.0.0",
+  "minNoctaliaVersion": "3.6.0",
+  "author": "rael2pac",
+  "license": "MIT",
+  "repository": "https://github.com/rael2pac/NixOS",
+  "description": "List all monitors and toggle each on/off via Niri compositor",
+  "tags": ["Bar", "Panel", "Hardware"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml",
+    "panel": "Panel.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {}
+  }
+}

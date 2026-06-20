@@ -1,0 +1,10 @@
+# Secrets
+*.pem
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Nix
+result

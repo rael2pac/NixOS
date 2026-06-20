@@ -1,0 +1,57 @@
+name: Validate Plugin Registry
+
+on:
+  pull_request:
+    paths:
+      - "**/manifest.json"
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate registry.json
+        run: |
+          python3 -c "
+import json, os, sys
+
+errors = []
+
+with open('registry.json') as f:
+    registry = json.load(f)
+
+plugins = registry.get('plugins', registry) if isinstance(registry, dict) else registry
+
+for item in plugins:
+    pid = item.get('id')
+    manifest_path = f'{pid}/manifest.json'
+    if not os.path.exists(manifest_path):
+        errors.append(f'Plugin {pid}: directory/manifest not found')
+        continue
+    with open(manifest_path) as f:
+        manifest = json.load(f)
+    if manifest.get('id') != pid:
+        errors.append(f'Plugin {pid}: manifest id mismatch')
+
+for d in os.listdir('.'):
+    if d.startswith('.') or d == 'registry.json':
+        continue
+    mp = f'{d}/manifest.json'
+    if os.path.exists(mp):
+        if not any(p.get('id') == d for p in plugins):
+            errors.append(f'{d}: has manifest but not in registry.json')
+
+if errors:
+    print('Errors found:')
+    for e in errors:
+        print(f'  - {e}')
+    sys.exit(1)
+else:
+    print(f'All {len(plugins)} plugins validated successfully')
+"
