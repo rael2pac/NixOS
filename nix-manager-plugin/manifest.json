@@ -1,0 +1,8 @@
+{
+    "id": "nix-manager",
+    "name": "Nix Manager",
+    "description": "Atualização e limpeza do NixOS",
+    "version": "1.0.0",
+    "author": "Gemini CLI",
+    "icon": "nix-snowflake"
+}

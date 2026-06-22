@@ -1,0 +1,13 @@
+# Nix
+result
+result-*
+
+# Diretórios do sistema
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Editor
+.vscode/
+.idea/
