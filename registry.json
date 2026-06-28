@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "id": "arch-updater",
+      "name": "Arch Updater",
+      "version": "2.1.10",
+      "official": false,
+      "author": "Ast",
+      "description": "A plugin to manage updates on Arch",
+      "repository": "https://github.com/rael2pac/Noctalia-plugins",
+      "minNoctaliaVersion": "3.6.0",
+      "license": "MIT",
+      "tags": ["Bar", "Desktop", "Panel", "Launcher", "System", "Utility"],
+      "lastUpdated": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "controller-battery",
+      "name": "Controller Battery",
+      "version": "1.0.0",
+      "official": false,
+      "author": "rael",
+      "description": "Shows battery level of connected wireless controllers (PS4, Xbox) in the bar",
+      "repository": "https://github.com/rael2pac/Noctalia-plugins",
+      "minNoctaliaVersion": "3.6.0",
+      "license": "MIT",
+      "tags": ["Bar", "Hardware"],
+      "lastUpdated": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "hdmi-toggle",
+      "name": "Gerenciador de Monitores",
+      "version": "2.0.0",
+      "official": false,
+      "author": "rael",
+      "description": "Lista todos os monitores e permite ligar/desligar cada um",
+      "repository": "https://github.com/rael2pac/Noctalia-plugins",
+      "license": "MIT",
+      "tags": ["Bar", "Panel", "Hardware"],
+      "lastUpdated": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "nix-manager",
+      "name": "Nix Manager",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Gemini CLI",
+      "description": "Atualização e limpeza do NixOS",
+      "repository": "https://github.com/rael2pac/Noctalia-plugins",
+      "tags": ["System", "Utility"],
+      "lastUpdated": "2026-06-28T00:00:00Z"
+    }
+  ]
+}
