@@ -16,11 +16,10 @@
             "homepage": "Homepage"
         },
         "title": "Arch Updater",
-        "name": "Name",
-        "oldVer": "Old Version",
-        "newVer": "New Version",
+        "name": "Package",
+        "version": "Version",
         "refresh": "Refresh",
-        "update": "Update",
+        "update": "Update All",
         "settings": "Settings"
     },
     "toast": {

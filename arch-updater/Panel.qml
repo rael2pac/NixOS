@@ -180,10 +180,10 @@ Item {
                         spacing: Style.marginS
 
                     Item {
-                        Layout.preferredWidth: Style.fontSizeL
+                        Layout.preferredWidth: Style.fontSizeL * 1.8
                     }
                     NText {
-                        Layout.preferredWidth: 0.35 * root.tableContentWidth
+                        Layout.preferredWidth: 0.4 * root.tableContentWidth
                         text: pluginApi?.tr("panel.name")
                         pointSize: Style.fontSizeL
                         font.weight: Font.Bold
@@ -191,20 +191,12 @@ Item {
                         horizontalAlignment: Text.AlignLeft
                     }
                     NText {
-                        Layout.preferredWidth: 0.3 * root.tableContentWidth
-                        text: pluginApi?.tr("panel.oldVer")
+                        Layout.preferredWidth: 0.35 * root.tableContentWidth
+                        text: pluginApi?.tr("panel.version")
                         pointSize: Style.fontSizeL
                         font.weight: Font.Bold
                         color: Color.mOnSurface
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-                    NText {
-                        Layout.preferredWidth: 0.3 * root.tableContentWidth
-                        text: pluginApi?.tr("panel.newVer")
-                        pointSize: Style.fontSizeL
-                        font.weight: Font.Bold
-                        color: Color.mOnSurface
-                        horizontalAlignment: Text.AlignHCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
                     }
 
@@ -224,80 +216,98 @@ Item {
                             spacing: Style.marginXS
 
                             delegate: RowLayout {
+                                id: delegateRow
                                 required property var modelData
-                                readonly property color sourceColor: modelData.source == "flatpak" ? "#38bdf8" : modelData.source == "system" ? "#86efac" : "#fb923c"
+                                required property int index
+                                readonly property color repoColor: modelData.repo == "core" ? "#3b82f6" : modelData.repo == "extra" ? "#22c55e" : modelData.repo == "multilib" ? "#ec4899" : modelData.repo == "aur" ? "#06b6d4" : modelData.repo == "flatpak" ? "#38bdf8" : "#94a3b8"
                                 readonly property color iconColor: modelData.source == "flatpak" ? "#38bdf8" : modelData.source == "system" ? "#facc15" : "#fb923c"
                                 width: tableView.width
                                 spacing: Style.marginS
 
-                                Item {
-                                    Layout.preferredWidth: Style.fontSizeL
-                                    Layout.preferredHeight: Style.fontSizeL
-                                    IconImage {
-                                        id: srcIcon
-                                        anchors.fill: parent
-                                        source: Qt.resolvedUrl(pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "pacman" : "aur") + ".svg")
-                                        smooth: true
-                                        asynchronous: true
+                                RowLayout {
+                                    Layout.preferredWidth: Style.fontSizeL * 1.8
+                                    spacing: Style.marginXS
+                                    NText {
+                                        text: (index + 1).toString()
+                                        pointSize: Style.fontSizeM
+                                        color: "#3b82f6"
+                                        horizontalAlignment: Text.AlignRight
                                     }
-                                    ColorOverlay {
-                                        anchors.fill: srcIcon
-                                        source: srcIcon
-                                        color: parent.parent.iconColor
+                                    Item {
+                                        Layout.preferredWidth: Style.fontSizeL
+                                        Layout.preferredHeight: Style.fontSizeL
+                                        IconImage {
+                                            id: srcIcon
+                                            anchors.fill: parent
+                                            source: Qt.resolvedUrl(pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "pacman" : "aur") + ".svg")
+                                            smooth: true
+                                            asynchronous: true
+                                        }
+                                        ColorOverlay {
+                                            anchors.fill: srcIcon
+                                            source: srcIcon
+                                            color: delegateRow.iconColor
+                                        }
                                     }
                                 }
-                                NText { // Name
-                                    Layout.preferredWidth: 0.35 * root.tableContentWidth
-                                    text: modelData.name
-                                    pointSize: Style.fontSizeM
-                                    color: parent.sourceColor
-                                    elide: Text.ElideRight
-                                    maximumLineCount: 1
-                                    
-                                    TableTooltip {
-                                        anchors.fill: parent
-                                        packageID: modelData.id
-                                        source: modelData.source
-                                        name: modelData.name
+                                RowLayout {
+                                    Layout.preferredWidth: 0.4 * root.tableContentWidth
+                                    spacing: 0
+                                    NText {
+                                        text: modelData.repo ? modelData.repo + " / " : ""
+                                        pointSize: Style.fontSizeM
+                                        color: delegateRow.repoColor
+                                        elide: Text.ElideRight
+                                        maximumLineCount: 1
+                                    }
+                                    NText {
                                         text: modelData.name
-                                        tooltipDirection: BarService.getTooltipDirection(root.screen?.name)
+                                        pointSize: Style.fontSizeM
+                                        color: Color.mOnSurface
+                                        elide: Text.ElideRight
+                                        maximumLineCount: 1
+
+                                        TableTooltip {
+                                            anchors.fill: parent
+                                            packageID: modelData.id
+                                            source: modelData.source
+                                            name: modelData.name
+                                            text: modelData.name
+                                            tooltipDirection: BarService.getTooltipDirection(root.screen?.name)
+                                        }
                                     }
                                 }
-                                NText { // Old Version
-                                    Layout.preferredWidth: 0.3 * root.tableContentWidth
-                                    text: modelData.oldVer
-                                    pointSize: Style.fontSizeM
-                                    color: parent.sourceColor
-                                    horizontalAlignment: Text.AlignHCenter
-                                    elide: Text.ElideRight
-                                    maximumLineCount: 1
-                                    
-                                    TableTooltip {
-                                        anchors.fill: parent
-                                        packageID: modelData.id
-                                        source: modelData.source
-                                        name: modelData.name
+                                RowLayout {
+                                    Layout.preferredWidth: 0.35 * root.tableContentWidth
+                                    spacing: 0
+                                    NText {
                                         text: modelData.oldVer
-                                        tooltipDirection: BarService.getTooltipDirection(root.screen?.name)
+                                        pointSize: Style.fontSizeM
+                                        color: "#ef4444"
+                                        elide: Text.ElideRight
+                                        maximumLineCount: 1
                                     }
-                                }
-                                NText { // New Version
-                                    Layout.preferredWidth: 0.3 * root.tableContentWidth
-                                    text: modelData.newVer
-                                    pointSize: Style.fontSizeM
-                                    font.weight: (pluginApi.pluginSettings.boldVerPanel ?? pluginApi.manifest.metadata.defaultSettings.boldVerPanel) ? Font.Bold : Font.Normal
-                                    color: parent.sourceColor
-                                    horizontalAlignment: Text.AlignHCenter
-                                    elide: Text.ElideRight
-                                    maximumLineCount: 1
-                                    
-                                    TableTooltip {
-                                        anchors.fill: parent
-                                        packageID: modelData.id
-                                        source: modelData.source
-                                        name: modelData.name
+                                    NText {
+                                        text: "  \u2192  "
+                                        pointSize: Style.fontSizeM
+                                        color: "#64748b"
+                                    }
+                                    NText {
                                         text: modelData.newVer
-                                        tooltipDirection: BarService.getTooltipDirection(root.screen?.name)
+                                        pointSize: Style.fontSizeM
+                                        font.weight: (pluginApi.pluginSettings.boldVerPanel ?? pluginApi.manifest.metadata.defaultSettings.boldVerPanel) ? Font.Bold : Font.Normal
+                                        color: "#22c55e"
+                                        elide: Text.ElideRight
+                                        maximumLineCount: 1
+
+                                        TableTooltip {
+                                            anchors.fill: parent
+                                            packageID: modelData.id
+                                            source: modelData.source
+                                            name: modelData.name
+                                            text: modelData.oldVer + " -> " + modelData.newVer
+                                            tooltipDirection: BarService.getTooltipDirection(root.screen?.name)
+                                        }
                                     }
                                 }
                             }

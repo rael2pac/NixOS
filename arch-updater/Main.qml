@@ -234,10 +234,13 @@ Item {
 
                 for (var i = 0; i < lines.length; i++) {
                     var parts = lines[i].split(/\s+/)
-                    // Expected format: name oldver -> newver
+                    // Expected format: repo/name oldver -> newver
                     if (parts.length >= 4) {
-                        names.push(parts[0])
-                        rows.push({id: parts[0], name: parts[0], oldVer: parts[1], newVer: parts[3], source: "system" })
+                        var pkgParts = parts[0].split("/")
+                        var repo = pkgParts.length > 1 ? pkgParts[0] : ""
+                        var pkgName = pkgParts.length > 1 ? pkgParts.slice(1).join("/") : parts[0]
+                        names.push(pkgName)
+                        rows.push({id: parts[0], name: pkgName, repo: repo, oldVer: parts[1], newVer: parts[3], source: "system" })
                     }
                 }
 
@@ -287,7 +290,7 @@ Item {
                     // Expected format: name oldver -> newver
                     if (parts.length >= 4) {
                         names.push(parts[0])
-                        rows.push({id: parts[0], name: parts[0], oldVer: parts[1], newVer: parts[3], source: "aur" })
+                        rows.push({id: parts[0], name: parts[0], repo: "aur", oldVer: parts[1], newVer: parts[3], source: "aur" })
                     }
                 }
 
@@ -340,7 +343,7 @@ Item {
                     // Expected format: application\tname\tnewver\toldver
                     if (parts.length >= 4) {
                         names.push(parts[1])
-                        rows.push({id: parts[0], name: parts[1], oldVer: parts[3], newVer: parts[2], source: "flatpak" })
+                        rows.push({id: parts[0], name: parts[1], repo: "flatpak", oldVer: parts[3], newVer: parts[2], source: "flatpak" })
                     }
                 }
 

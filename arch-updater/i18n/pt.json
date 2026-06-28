@@ -16,9 +16,8 @@
             "homepage": "Página Inicial"
         },
         "title": "Arch Updater",
-        "name": "Nome",
-        "oldVer": "Versão Antiga",
-        "newVer": "Nova Versão",
+        "name": "Pacote",
+        "version": "Versão",
         "refresh": "Verificar",
         "update": "Atualizar",
         "settings": "Configurações"
