@@ -1,5 +1,5 @@
 {
-  "systemCmd": "checkupdates 2>/dev/null | while IFS= read -r line; do pkg=${line%% *}; repo=$(pacman -Qi \"$pkg\" 2>/dev/null | awk -F': ' '/^Repository/{print $2}'); [ -z \"$repo\" ] && repo=$(pacman -Si \"$pkg\" 2>/dev/null | awk -F': ' '/^Repository/{print $2}'); echo \"${repo:--}/$line\"; done",
+  "systemCmd": "checkupdates 2>/dev/null",
   "aurCmd": "yay -Qua 2>/dev/null",
   "updateCmd": "kitty -e bash -c 'echo \"Updating System...\";yay --noconfirm; flatpak update; read -n 1 -p \"Press any key to exit...\"'",
   "aurHomepageCmd": "LC_ALL=C yay -Si {id} 2>/dev/null | awk '/^URL/ {print $3}'",
