@@ -180,7 +180,7 @@ Item {
                         spacing: Style.marginS
 
                     Item {
-                        Layout.preferredWidth: Style.fontSizeL * 1.8
+                        Layout.preferredWidth: Style.fontSizeL
                     }
                     NText {
                         Layout.preferredWidth: 0.4 * root.tableContentWidth
@@ -224,30 +224,20 @@ Item {
                                 width: tableView.width
                                 spacing: Style.marginS
 
-                                RowLayout {
-                                    Layout.preferredWidth: Style.fontSizeL * 1.8
-                                    spacing: Style.marginXS
-                                    NText {
-                                        text: (index + 1).toString()
-                                        pointSize: Style.fontSizeM
-                                        color: "#3b82f6"
-                                        horizontalAlignment: Text.AlignRight
+                                Item {
+                                    Layout.preferredWidth: Style.fontSizeL
+                                    Layout.preferredHeight: Style.fontSizeL
+                                    IconImage {
+                                        id: srcIcon
+                                        anchors.fill: parent
+                                        source: Qt.resolvedUrl(pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "pacman" : "aur") + ".svg")
+                                        smooth: true
+                                        asynchronous: true
                                     }
-                                    Item {
-                                        Layout.preferredWidth: Style.fontSizeL
-                                        Layout.preferredHeight: Style.fontSizeL
-                                        IconImage {
-                                            id: srcIcon
-                                            anchors.fill: parent
-                                            source: Qt.resolvedUrl(pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "pacman" : "aur") + ".svg")
-                                            smooth: true
-                                            asynchronous: true
-                                        }
-                                        ColorOverlay {
-                                            anchors.fill: srcIcon
-                                            source: srcIcon
-                                            color: delegateRow.iconColor
-                                        }
+                                    ColorOverlay {
+                                        anchors.fill: srcIcon
+                                        source: srcIcon
+                                        color: delegateRow.iconColor
                                     }
                                 }
                                 RowLayout {
