@@ -224,7 +224,7 @@ Item {
 
                             delegate: RowLayout {
                                 required property var modelData
-                                readonly property color sourceColor: modelData.source == "flatpak" ? "#38bdf8" : modelData.source == "system" ? "#4ade80" : "#fb923c"
+                                readonly property color sourceColor: modelData.source == "flatpak" ? "#38bdf8" : modelData.source == "system" ? "#facc15" : "#fb923c"
                                 width: tableView.width
                                 spacing: Style.marginS
 
