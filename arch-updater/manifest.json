@@ -22,7 +22,7 @@
   },
   "metadata": {
     "defaultSettings": {
-      "systemCmd": "checkupdates 2>/dev/null",
+      "systemCmd": "pacman -Qu 2>/dev/null | while IFS= read -r line; do pkg=${line%% *}; repo=$(pacman -Qi \"$pkg\" 2>/dev/null | sed -n 's/^Repository *: //p'); echo \"${repo:--}/$line\"; done",
       "aurCmd": "yay -Qua 2>/dev/null",
       "updateCmd": "kitty -e bash -c 'echo \"Updating System...\";yay; flatpak update; read -n 1 -p \"Press any key to exit...\"'",
       "aurHomepageCmd": "LC_ALL=C yay -Si {id} 2>/dev/null | awk '/^URL/ {print $3}'",
