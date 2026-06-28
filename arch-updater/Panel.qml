@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import Qt5Compat.GraphicalEffects
 import Quickshell
 import Quickshell.Widgets
 import qs.Commons
@@ -228,12 +229,21 @@ Item {
                                 width: tableView.width
                                 spacing: Style.marginS
 
-                                IconImage {
+                                Item {
                                     Layout.preferredWidth: Style.fontSizeL
                                     Layout.preferredHeight: Style.fontSizeL
-                                    source: Qt.resolvedUrl(pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "pacman" : "aur") + ".svg")
-                                    smooth: true
-                                    asynchronous: true
+                                    IconImage {
+                                        id: srcIcon
+                                        anchors.fill: parent
+                                        source: Qt.resolvedUrl(pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "pacman" : "aur") + ".svg")
+                                        smooth: true
+                                        asynchronous: true
+                                    }
+                                    ColorOverlay {
+                                        anchors.fill: srcIcon
+                                        source: srcIcon
+                                        color: parent.parent.sourceColor
+                                    }
                                 }
                                 NText { // Name
                                     Layout.preferredWidth: 0.35 * root.tableContentWidth
