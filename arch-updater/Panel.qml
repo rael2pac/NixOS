@@ -230,7 +230,7 @@ Item {
                                 IconImage {
                                     Layout.preferredWidth: Style.fontSizeL
                                     Layout.preferredHeight: Style.fontSizeL
-                                    source: Qt.resolvedUrl(pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "arch" : "aur") + ".svg")
+                                    source: Qt.resolvedUrl(pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "pacman" : "aur") + ".svg")
                                     smooth: true
                                     asynchronous: true
                                 }
