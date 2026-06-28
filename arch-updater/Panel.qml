@@ -227,10 +227,12 @@ Item {
                                 width: tableView.width
                                 spacing: Style.marginS
 
-                                NIcon {
-                                    icon: modelData.source == "flatpak" ? "box" : modelData.source == "system" ? "package" : "code"
-                                    color: (modelData.source == "flatpak") ? Color.mTertiary : (modelData.source == "system") ? Color.mSecondary : Color.mPrimary
-                                    pointSize: Style.fontSizeL
+                                IconImage {
+                                    Layout.preferredWidth: Style.fontSizeL
+                                    Layout.preferredHeight: Style.fontSizeL
+                                    source: pluginApi.pluginDir + "/icons/" + (modelData.source == "flatpak" ? "flatpak" : modelData.source == "system" ? "arch" : "aur") + ".svg"
+                                    smooth: true
+                                    asynchronous: true
                                 }
                                 NText { // Name
                                     Layout.preferredWidth: 0.35 * root.tableContentWidth
