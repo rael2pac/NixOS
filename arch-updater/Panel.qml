@@ -177,27 +177,20 @@ Item {
                     RowLayout {
                         Layout.fillWidth: true
                         Layout.leftMargin: Style.marginS
-                        spacing: Style.marginS
+                        spacing: Style.marginL
 
                     Item {
                         Layout.preferredWidth: Style.fontSizeL
                     }
                     NText {
                         Layout.preferredWidth: 0.4 * root.tableContentWidth
-                        text: pluginApi?.tr("panel.name")
+                        text: "Pacotes"
                         pointSize: Style.fontSizeL
                         font.weight: Font.Bold
                         color: Color.mOnSurface
                         horizontalAlignment: Text.AlignLeft
                     }
-                    NText {
-                        Layout.preferredWidth: 0.35 * root.tableContentWidth
-                        text: pluginApi?.tr("panel.version")
-                        pointSize: Style.fontSizeL
-                        font.weight: Font.Bold
-                        color: Color.mOnSurface
-                        horizontalAlignment: Text.AlignLeft
-                    }
+
                     }
 
                     // Table
@@ -222,7 +215,7 @@ Item {
                                 readonly property color repoColor: modelData.repo == "core" ? "#3b82f6" : modelData.repo == "extra" ? "#22c55e" : modelData.repo == "multilib" ? "#ec4899" : modelData.repo == "aur" ? "#06b6d4" : modelData.repo == "flatpak" ? "#38bdf8" : "#94a3b8"
                                 readonly property color iconColor: modelData.source == "flatpak" ? "#38bdf8" : modelData.source == "system" ? "#facc15" : "#fb923c"
                                 width: tableView.width
-                                spacing: Style.marginS
+                                spacing: Style.marginL
 
                                 Item {
                                     Layout.preferredWidth: Style.fontSizeL
