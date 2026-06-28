@@ -244,7 +244,7 @@ Item {
                                     Layout.preferredWidth: 0.4 * root.tableContentWidth
                                     spacing: 0
                                     NText {
-                                        text: modelData.repo ? modelData.repo + " / " : ""
+                                        text: modelData.repo ? modelData.repo + "/" : ""
                                         pointSize: Style.fontSizeM
                                         color: delegateRow.repoColor
                                         elide: Text.ElideRight
