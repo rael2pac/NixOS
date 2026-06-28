@@ -224,6 +224,7 @@ Item {
 
                             delegate: RowLayout {
                                 required property var modelData
+                                readonly property color sourceColor: modelData.source == "flatpak" ? "#38bdf8" : modelData.source == "system" ? "#4ade80" : "#fb923c"
                                 width: tableView.width
                                 spacing: Style.marginS
 
@@ -238,7 +239,7 @@ Item {
                                     Layout.preferredWidth: 0.35 * root.tableContentWidth
                                     text: modelData.name
                                     pointSize: Style.fontSizeM
-                                    color: (modelData.source == "flatpak") ? Color.mTertiary : (modelData.source == "system") ? Color.mSecondary : Color.mPrimary
+                                    color: parent.sourceColor
                                     elide: Text.ElideRight
                                     maximumLineCount: 1
                                     
@@ -255,7 +256,7 @@ Item {
                                     Layout.preferredWidth: 0.3 * root.tableContentWidth
                                     text: modelData.oldVer
                                     pointSize: Style.fontSizeM
-                                    color: (modelData.source == "flatpak") ? Color.mTertiary : (modelData.source == "system") ? Color.mSecondary : Color.mPrimary
+                                    color: parent.sourceColor
                                     horizontalAlignment: Text.AlignHCenter
                                     elide: Text.ElideRight
                                     maximumLineCount: 1
@@ -274,7 +275,7 @@ Item {
                                     text: modelData.newVer
                                     pointSize: Style.fontSizeM
                                     font.weight: (pluginApi.pluginSettings.boldVerPanel ?? pluginApi.manifest.metadata.defaultSettings.boldVerPanel) ? Font.Bold : Font.Normal
-                                    color: (modelData.source == "flatpak") ? Color.mTertiary : (modelData.source == "system") ? Color.mSecondary : Color.mPrimary
+                                    color: parent.sourceColor
                                     horizontalAlignment: Text.AlignHCenter
                                     elide: Text.ElideRight
                                     maximumLineCount: 1
