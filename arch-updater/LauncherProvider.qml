@@ -60,7 +60,7 @@ Item {
             // Sets the icon for each entry
             switch(updates[i].source) {
                 case "system":
-                    var icon = pluginApi.pluginDir + "/icons/arch.svg"
+                    var icon = pluginApi.pluginDir + "/icons/pacman.svg"
                     var isTabler = false
                     break
                 case "aur":
