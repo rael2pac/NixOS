@@ -214,6 +214,7 @@ Item {
                                 required property int index
                                 readonly property color repoColor: modelData.repo == "core" ? "#3b82f6" : modelData.repo == "extra" ? "#22c55e" : modelData.repo == "multilib" ? "#ec4899" : modelData.repo == "aur" ? "#06b6d4" : modelData.repo == "flatpak" ? "#38bdf8" : "#94a3b8"
                                 readonly property color iconColor: modelData.source == "flatpak" ? "#38bdf8" : modelData.source == "system" ? "#facc15" : "#fb923c"
+                                readonly property real versionColWidth: 0.35 * root.tableContentWidth
                                 width: tableView.width
                                 spacing: Style.marginL
 
@@ -265,27 +266,33 @@ Item {
                                     }
                                 }
                                 RowLayout {
-                                    Layout.preferredWidth: 0.35 * root.tableContentWidth
+                                    Layout.preferredWidth: delegateRow.versionColWidth
                                     spacing: 0
                                     NText {
+                                        Layout.preferredWidth: delegateRow.versionColWidth * 0.42
                                         text: modelData.oldVer
                                         pointSize: Style.fontSizeM
                                         color: "#ef4444"
                                         elide: Text.ElideRight
                                         maximumLineCount: 1
+                                        horizontalAlignment: Text.AlignRight
                                     }
                                     NText {
-                                        text: "  \u2192  "
+                                        Layout.preferredWidth: delegateRow.versionColWidth * 0.16
+                                        text: "\u2192"
                                         pointSize: Style.fontSizeM
                                         color: "#64748b"
+                                        horizontalAlignment: Text.AlignHCenter
                                     }
                                     NText {
+                                        Layout.preferredWidth: delegateRow.versionColWidth * 0.42
                                         text: modelData.newVer
                                         pointSize: Style.fontSizeM
                                         font.weight: (pluginApi.pluginSettings.boldVerPanel ?? pluginApi.manifest.metadata.defaultSettings.boldVerPanel) ? Font.Bold : Font.Normal
                                         color: "#22c55e"
                                         elide: Text.ElideRight
                                         maximumLineCount: 1
+                                        horizontalAlignment: Text.AlignLeft
 
                                         TableTooltip {
                                             anchors.fill: parent
