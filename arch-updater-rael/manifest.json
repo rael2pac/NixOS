@@ -1,7 +1,7 @@
 {
   "id": "arch-updater-rael",
   "name": "Arch Update (rael2pac)",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "minNoctaliaVersion": "3.6.0",
   "author": "Ast",
   "license": "MIT",

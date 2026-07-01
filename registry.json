@@ -4,7 +4,7 @@
     {
       "id": "arch-updater-rael",
       "name": "Arch Update (rael2pac)",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "official": false,
       "author": "Ast",
       "description": "A plugin to manage updates on Arch",
