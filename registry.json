@@ -4,7 +4,7 @@
     {
       "id": "arch-updater",
       "name": "Archlinux Update",
-      "version": "2.1.10",
+      "version": "2.2.0",
       "official": false,
       "author": "Ast",
       "description": "A plugin to manage updates on Arch",
