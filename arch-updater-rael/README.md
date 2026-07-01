@@ -24,8 +24,8 @@ With optional Flatpak support, highlight for Noctalia updates, refresh timer, hi
 - Middle click to update
 
 **IPC**
-- Refresh with `qs -c noctalia-shell ipc call plugin:arch-updater refresh`
-- Update with `qs -c noctalia-shell ipc call plugin:arch-updater update`
+- Refresh with `qs -c noctalia-shell ipc call plugin:arch-updater-rael refresh`
+- Update with `qs -c noctalia-shell ipc call plugin:arch-updater-rael update`
 
 **Launcher Integration**
 - Refresh with `>au-refresh`

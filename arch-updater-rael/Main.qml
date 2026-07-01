@@ -407,7 +407,7 @@ Item {
     }
 
     IpcHandler {
-        target: "plugin:arch-updater"
+        target: "plugin:arch-updater-rael"
 
         function refresh() {
             Logger.d("Arch Updater", "Refreshing through IPC...")

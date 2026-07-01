@@ -1,6 +1,6 @@
 {
-  "id": "arch-updater",
-  "name": "Archlinux Update",
+  "id": "arch-updater-rael",
+  "name": "Arch Update (rael2pac)",
   "version": "2.2.0",
   "minNoctaliaVersion": "3.6.0",
   "author": "Ast",

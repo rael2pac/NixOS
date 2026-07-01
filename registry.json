@@ -2,8 +2,8 @@
   "version": 1,
   "plugins": [
     {
-      "id": "arch-updater",
-      "name": "Archlinux Update",
+      "id": "arch-updater-rael",
+      "name": "Arch Update (rael2pac)",
       "version": "2.2.0",
       "official": false,
       "author": "Ast",
